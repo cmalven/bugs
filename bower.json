@@ -1,0 +1,9 @@
+{
+  "name": "bugkilla",
+  "version": "0.0.1",
+  "dependencies": {
+    "victor": "~0.2.6",
+    "animation-frame": "~0.1.7"
+  },
+  "private": true
+}

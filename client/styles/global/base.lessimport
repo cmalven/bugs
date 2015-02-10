@@ -1,0 +1,10 @@
+/* ==============================================================
+   Base
+   ============================================================== */
+
+// A very limited set of global defaults and styles
+
+// Box Sizing Border-box
+// ==============================================================
+    
+* { box-sizing: border-box; -moz-box-sizing: border-box; }
