@@ -1,5 +1,5 @@
 {
-  "name": "bugkilla",
+  "name": "bugs",
   "version": "0.0.1",
   "dependencies": {
     "victor": "~0.2.6",

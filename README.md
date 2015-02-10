@@ -1,4 +1,4 @@
-# Bugkilla
+# Bugs
 
 Makes bug-squashing fun-ish.
 
