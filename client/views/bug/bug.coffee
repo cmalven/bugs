@@ -7,11 +7,11 @@ Template.bug.rendered = ->
   ww = $(window).width()
   wh = $(window).height()
   bugSize = 100
+  maxSpeed = new Victor(2, 2)
+  maxForce = new Victor(0.15, 0.15)
 
   @bug =
     $el: this.$(this.firstNode)
-    maxSpeed: new Victor(3, 3)
-    maxForce: new Victor(0.15, 0.15)
     location: new Victor(Math.random() * ww, -bugSize)
     velocity: new Victor(0, 0)
     acceleration: new Victor(0, 0)
@@ -28,7 +28,7 @@ Template.bug.rendered = ->
         @bug.velocity = @bug.velocity.add(@bug.acceleration)
 
         # Limit Speed
-        @bug.velocity = @bug.maxSpeed if @bug.velocity.length() > @bug.maxSpeed.length
+        @bug.velocity = maxSpeed if @bug.velocity.length() > maxSpeed.length
 
         # Update Location
         @bug.location = @bug.location.add(@bug.velocity)
@@ -66,9 +66,9 @@ Template.bug.rendered = ->
       desired = target
       desired = desired.subtract(@bug.location)
       desired = desired.normalize()
-      desired = desired.multiply(@bug.maxSpeed)
+      desired = desired.multiply(maxSpeed)
       steer = desired.clone().subtract(@bug.velocity)
-      steer = @bug.maxForce if steer.length() > @bug.maxForce.length
+      steer = maxForce if steer.length() > maxForce.length
       @bug.applyForce(steer)
 
     applyForce: (force) =>
