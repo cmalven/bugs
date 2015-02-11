@@ -18,22 +18,61 @@ An individual bug
 */
 
 .bug {
-  background-image: url('/images/bug.svg');
   position: absolute;
-  width: 35px;
-  height: 73px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  opacity: 0.8;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+
+  &:hover:before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.08);
+  }
 }
 
 //
 // Sub-Modules
 //
 
-.bug__sub-module {
-
+.bug__body {
+  background-image: url('/images/bug.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  width: 35px;
+  height: 73px;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
+
+.bug__info {
+  display: none;
+  position: absolute;
+  right: -110px;
+  top: 40px;
+  font-size: 11px;
+  color: #fff;
+  font-family: "Helvetica Neue", helvetica;
+  background-color: #111;
+  border-radius: 4px;
+  width: 130px;
+  padding: 10px;
+  text-align: center;
+
+  .bug:hover & {
+    display: block;
+  }
+}
+
 
 
 //---------------------------------------------------------------

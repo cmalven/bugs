@@ -6,9 +6,10 @@ Template.bug.helpers
 Template.bug.rendered = ->
   ww = $(window).width()
   wh = $(window).height()
-  bugSize = 100
+  bugSize = 200
   maxSpeed = new Victor(2, 2)
   maxForce = new Victor(0.15, 0.15)
+  bugBodyClass = '.bug__body'
 
   @bug =
     $el: this.$(this.firstNode)
@@ -39,7 +40,8 @@ Template.bug.rendered = ->
         # Set rotation
         rotation = @bug.velocity.angleDeg() + 90
 
-        @bug.$el[0].style.transform = "translate3d(#{@bug.location.x}px, #{@bug.location.y}px, 0) rotate(#{rotation}deg)"
+        @bug.$el[0].style.transform = "translate3d(#{@bug.location.x}px, #{@bug.location.y}px, 0)"
+        @bug.$el.find(bugBodyClass)[0].style.transform = "rotate(#{rotation}deg)"
         
         @bug.update()
 
