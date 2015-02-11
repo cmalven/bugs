@@ -1,7 +1,7 @@
 Template.bug.helpers
 
-  # foo: ->
-  #   return "You're in the bug view!"
+  isSelectedClass: ->
+    return 'is-selected' if Session.get('selected_bug') is @_id
 
 Template.bug.rendered = ->
   ww = $(window).width()
@@ -85,5 +85,5 @@ Template.bug.rendered = ->
   @bug.update()
   
 Template.bug.events
-  # 'click .foo': (evt) ->
-  #    Event Callback
+  'mouseover': (evt) ->
+    Session.set('selected_bug', @_id)
