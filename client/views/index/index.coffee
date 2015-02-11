@@ -24,7 +24,8 @@ Template.index.rendered = ->
         return unless result
         _.each result.tasks, (task) ->
           # Create a bug
-          return if task.status_id is 5
+          # Don't create bug if the status is Done (4) or Closed (5)
+          return if task.status_id is 4 or task.status_id is 5
           Bugs.insert
             projectName: project.name
             description: task.description
