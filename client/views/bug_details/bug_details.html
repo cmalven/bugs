@@ -1,0 +1,13 @@
+<template name="bug_details">
+  {{#if bugSelected}}
+    <div class="bug-details">
+      {{#with bug}}
+        <p><span>projectName:</span> {{ projectName }}</p>
+        <p><span>description:</span> {{ description }}</p>
+        <p><span>created_at:</span> {{ created_at }}</p>
+        <p><span>status_id:</span> {{ status_id }}</p>
+        <p><span>requester_email:</span> {{ requester_email }}</p>
+      {{/with}}
+    </div >
+  {{/if}}
+</template>
