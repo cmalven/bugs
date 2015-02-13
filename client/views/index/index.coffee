@@ -8,6 +8,16 @@ Template.index.created = ->
   window.Bugs = new Meteor.Collection(null)
 
 Template.index.rendered = ->
+  # Create the Bug Canvas
+  window.bugCanvas = new BugCanvas({ $target: $('.js-bug-canvas')})
+
+  # Get all Bugs
+  fetchBugs()
+
+Template.index.destroyed = ->
+  # console.log 'destroyed!'
+
+fetchBugs = ->
   projects = null
 
   Meteor.call 'fetchProjects', (err, result) ->
@@ -35,10 +45,13 @@ Template.index.rendered = ->
             status_id: task.status_id
             requester_email: task.requester_email
             tag_names: task.tag_names
+          , (error, id) -> 
+            addBugToCanvas(id)
     , 5000)
 
-Template.index.destroyed = ->
-  # console.log 'destroyed!'
+addBugToCanvas = (bugId) ->
+  bug = Bugs.findOne(bugId)
+  window.bugCanvas.addBug()
   
 Template.index.events
   # 'click .foo': (evt) ->
