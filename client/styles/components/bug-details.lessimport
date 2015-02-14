@@ -1,0 +1,30 @@
+
+/* ==============================================================
+   Bug Details
+   ============================================================== */
+
+
+//---------------------------------------------------------------
+// Base
+//---------------------------------------------------------------
+
+
+/*
+Bug Details
+
+Shows details for the selected bug
+*/
+
+.bug-details {
+  width: 40%;
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+  padding: 50px;
+  background-color: #333;
+  color: #fff;
+  font-family: "Helvetica Neue", helvetica, arial;
+  line-height: 1.6;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}

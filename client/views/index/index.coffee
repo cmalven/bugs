@@ -51,7 +51,7 @@ fetchBugs = ->
 
 addBugToCanvas = (bugId) ->
   bug = Bugs.findOne(bugId)
-  window.bugCanvas.addBug()
+  window.bugCanvas.addBug(bugId)
   
 Template.index.events
   # 'click .foo': (evt) ->

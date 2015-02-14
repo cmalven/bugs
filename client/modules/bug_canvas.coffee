@@ -88,7 +88,7 @@ class root.BugCanvas
       bug.rotation = bug.velocity.angle()
 
   _wander: (bug) =>
-    wanderR = 20                                                # Radius for our "wander circle"
+    wanderR = 15                                                # Radius for our "wander circle"
     wanderD = 400                                               # Distance for our "wander circle"
     change = 0.3
     bug.wanderTheta += Math.random() * (change * 2) - change    # Randomly change wander theta
@@ -133,10 +133,12 @@ class root.BugCanvas
     # Halt animation frame cycle
     @animating = false
 
-  addBug: =>
+  addBug: (_id) =>
     bugTexture = PIXI.Texture.fromImage(@options.imageAssets[0])
 
     bugSprite = new PIXI.Sprite(bugTexture)
+
+    bugSprite._id = _id
 
     bugSprite.anchor.x = 0.5
     bugSprite.anchor.y = 0.5
@@ -150,6 +152,21 @@ class root.BugCanvas
     bugSprite.acceleration = new Victor(0, 0)
     bugSprite.wanderTheta = 0
     bugSprite.rotation = Math.random() * 6
+
+    # make the button interactive..    
+    bugSprite.interactive = true
+    
+    # set the mouseover callback..
+    bugSprite.mouseover = (data) =>
+      bugSprite.alpha = 0.5
+      Session.set('selected_bug', _id)
+    
+    # set the mouseout callback..
+    bugSprite.mouseout = (data) =>
+      bugSprite.alpha = 1
+    
+    bugSprite.click = bugSprite.tap = (data) =>
+      Session.set('selected_bug', _id)
 
     @bugs.push(bugSprite)
     @stage.addChild(bugSprite)
