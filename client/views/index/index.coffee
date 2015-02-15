@@ -20,8 +20,9 @@ Template.index.destroyed = ->
 fetchBugs = ->
   projects = null
 
-  Meteor.call 'fetchProjects', (err, result) ->
-    return unless result
+  Meteor.call 'fetchProjects', (error, result) ->
+    return console.log(error) if error
+
     projects = result.projects
     window.fetchProjectInterval = Meteor.setInterval(-> 
       project = projects[0]
@@ -30,7 +31,7 @@ fetchBugs = ->
       # Stop listening for projects if array is empty
       Meteor.clearInterval(fetchProjectInterval) unless projects.length
 
-      Meteor.call 'fetchBugs', project.id, (err, result) ->
+      Meteor.call 'fetchBugs', project.id, (error, result) ->
         return unless result
         _.each result.tasks, (task) ->
           # Create a bug
