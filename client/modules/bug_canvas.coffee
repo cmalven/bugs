@@ -143,9 +143,10 @@ class root.BugCanvas
     bugSprite.anchor.x = 0.5
     bugSprite.anchor.y = 0.5
 
-    bugSprite.scale.x = bugSprite.scale.y = 0.5
+    bugSprite.scale.x = bugSprite.scale.y = 0.35
 
-    bugSprite.blendMode = 2 # Multiply
+    # bugSprite.blendMode = 2 # Multiply
+    bugSprite.tint = Math.random() * 0xFFFFFF
 
     bugSprite.location = new Victor(Math.random() * @renderer.height, -@bugSize)
     bugSprite.velocity = new Victor(0, 0)
